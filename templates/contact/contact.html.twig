@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact {% endblock %}
+
+{% block body %}
+
+	<!--  section -->
+	<section class="page-info-section set-bg" data-setbg="/img/page-info-bg.jpg">
+		<div class="container">
+			<div class="section-title text-center">
+				<h2>Contact</h2>	
+			</div>
+		</div>
+	</section>
+	<!--  section end -->
+  
+{{form_start(form)}}
+<div class="contact-form">
+    <div class="row">
+        <div class="col-lg-4 offset-2">
+            {{form_row(form.lastname, {'label': 'Nom'})}}
+        </div>
+        <div class="col-lg-4">
+            
+            {{form_row(form.firstname, {'label': 'Prénom'} )}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 offset-2">
+            {{form_row(form.phone, {'label': 'Téléphone'})}}
+        </div>
+        <div class="col-lg-4">
+            {{form_row(form.mail, {'label': 'Mail'})}}
+        </div>
+    </div>
+	<div class="col-lg-8 offset-2">
+        {{form_row(form.message)}}
+    </div>
+
+
+<button class="site-btn">Envoyer</button>
+{{form_end(form)}}
+
+</div>
+
+{% endblock %}

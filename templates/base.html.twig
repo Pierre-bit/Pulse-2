@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Bienvenue!
+			{% endblock %}
+		</title>
+
+		<!-- Favicon -->
+		
+
+		<!-- Google Font -->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
+
+		{% block stylesheets %}
+
+
+			<!-- Stylesheets -->
+			<link rel="stylesheet" href="{{ asset('build/css/bootstrap.min.css') }} "/> <link rel="stylesheet" href="{{ asset('build/css/font-awesome.min.css') }} "/>
+			<link rel="stylesheet" href="{{ asset('build/css/jquery-ui.min.css') }} "/>
+			<link rel="stylesheet" href="{{ asset('build/css/flaticon.css') }} "/>
+			<link rel="stylesheet" href="{{ asset('build/css/owl.carousel.css') }} "/>
+			<link rel="stylesheet" href="{{ asset('build/css/style.css') }} "/>
+			<link rel="stylesheet" href="{{ asset('build/css/animate.css') }} "/>
+
+
+			<link rel="stylesheet" href="{{ asset('build/styles/flip_card.css') }}" type="text/css">
+			<link rel="stylesheet" href="{{ asset('build/styles/bootstrap-4.1.2/bootstrap.min.css') }}" type="text/css">
+			<link rel="stylesheet" href="{{ asset('build/styles/blog_responsive.css') }}" type="text/css">
+			<link rel="stylesheet" href="{{ asset('build/styles/contact.css') }}" type="text/css">
+			<link rel="stylesheet" href="{{ asset('build/styles/contact_responsive.css') }}" type="text/css">
+			<link rel="stylesheet" href="{{ asset('build/styles/elements.css') }}" type="text/css">
+			<link rel="stylesheet" href="{{ asset('build/styles/elements_responsive.css') }}" type="text/css">
+
+			<link rel="stylesheet" type="text/css" href="{{ asset('build/Datatable/datatables.min.css') }}" type="text/css"/>
+
+
+			<link rel="stylesheet" href="{{ asset('build/app.css') }}" type="text/css">
+
+			<link rel="stylesheet" href="{{ asset('build/plugins/OwlCarousel2-2.3.4/owl.carousel.css') }}" type="text/css">
+			<link rel="stylesheet" href="{{ asset('build/plugins/OwlCarousel2-2.3.4/owl.theme.default.css') }}" type="text/css">
+			<link rel="stylesheet" href="{{ asset('build/plugins/OwlCarousel2-2.3.4/animate.css') }}" type="text/css">
+			<link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css">
+
+			<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+			<!--- Bandeau News -->
+			<link rel="stylesheet" href="{{ asset('build/css/bandeauNews.css') }}">
+			<!--- Fin Bandeau News -->
+
+		{% endblock %}
+
+
+	</head>
+	<body>
+		<div
+			class="super_container">
+
+
+			<!-- Header section -->
+			<header class="header-section">
+				<div class="header-warp">
+					<!-- Site Logo -->
+					<a href="/">
+						<img  alt="" style="margin-top:9px;">
+					</a>
+					<!-- responsive -->
+					<div class="nav-switch">
+						<i class="fa fa-bars"></i>
+					</div>
+					<!-- Main Menu -->
+						<ul class="main-menu">
+			{% set route = app.request.get('_route') %}
+				<li class="{{ route starts with 'news' ? 'active' }}"><a href="/">Home</a></li>
+				<li class="{{ route starts with 'artiste' ? 'active' }}"><a href="/artiste">Artistes</a></li>
+				<li class="{{ route starts with 'albums' ? 'active' }}"><a href="/albums">Albums</a></li>
+				<li class="{{ route starts with 'single' ? 'active' }}"><a href="/single">Singles</a></li>
+				<li class="{{ route starts with 'tour' ? 'active' }}"><a href="/tour">Tours</a></li>
+				<li class="{{ route starts with 'contact' ? 'active' }}"><a href="/contact">Contact</a></li>
+				{% if is_granted('ROLE_ADMIN') %}
+				<li class="{{ route starts with 'user' ? 'active' }}"><a href="/user">Utilisateur</a></li>
+				{% endif %}
+				{% if is_granted('ROLE_ADMIN') %}
+				<li><a href="/logout">Déconnexion</a></li>
+				{% else %}
+				<li class="{{ route starts with 'login' ? 'active' }}" style="visibility:hidden"><a href="/login">Connexion</a></li>
+				
+				{% endif %} 
+				
+			</ul>
+
+
+					<!-- Social Links -->
+				</div>
+			</header>
+			<!-- Header section end -->
+
+			<!-- Menu -->
+
+
+			<div class="container-fluide" style="text-align:center">
+
+				{% block body %}
+
+				</div>
+			{% endblock %}
+			<script src="{{ asset('build/js/jquery-3.3.1.min.js') }}" type="text/javascript"></script>
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+			<script src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js"></script>
+			
+			<script src="{{ asset('build/js/popper.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/js/bootstrap.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/js/TweenMax.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/js/deezer.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/js/TimelineMax.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/js/custom.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/plugins/scrollmagic/ScrollMagic.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/plugins/greensock/animation.gsap.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/plugins/greensock/ScrollToPlugin.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/plugins/OwlCarousel2-2.3.4/owl.carousel.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/plugins/jPlayer/jquery.jplayer.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/plugins/jPlayer/jplayer.playlist.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/plugins/easing/easing.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/plugins/progressbar/progressbar.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/plugins/parallax-js-master/parallax.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/plugins/scrollTo/jquery.scrollTo.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/Datatable/datatables.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/js/texthide.js') }}" type="text/javascript"></script>
+			<!--- Bandeau News -->
+			
+
+			<script src="{{ asset('build/js/bandeauNews/jquery-3.2.1.min.js') }}"></script>
+			<script src="{{ asset('build/js/bandeauNews/owl.carousel.min.js') }}"></script>
+			<script src="{{ asset('build/js/bandeauNews/jquery.marquee.min.js') }}"></script>
+			<script src="{{ asset('build/js/bandeauNews/main.js') }}"></script>
+
+
+
+			<!-- Fin Bandeau News -->
+
+			<!-- JS de 88 -->
+			<script src="{{ asset('build/js/88/jquery-3.2.1.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/js/88/jquery-ui.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/js/88/bootstrap.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/js/88/owl.carousel.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/js/88/circle-progress.min.js') }}" type="text/javascript"></script>
+			<script src="{{ asset('build/js/88/main.js') }}" type="text/javascript"></script>
+
+			<!-- fin JS de 88 -->
+
+		
+
+
+			{% block javascripts %}{% endblock %}
+			<div class="footer" style="margin-top:200px;">
+				<footer id="footer" class="footer-1">
+					<div class="main-footer widgets-dark typo-light">
+						<div class="container">
+							<div class="row">
+
+								<div class="col-xs-12 col-sm-6 col-md-5">
+									<div class="widget subscribe no-box">
+										<h5 class="widget-title">Test<span></span>
+										</h5>
+										<p>
+											<span>Projet en cours</span>
+										</p>
+									</br>
+								</br>
+						</p>
+					</div>
+				</div>
+
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="widget no-box">
+						<h5 class="widget-title">Liens<span></span>
+						</h5>
+						<ul class="thumbnail-widget">
+							<li>
+								<div class="thumb-content">
+									<a href="/">Acceuil</a>
+								</div>
+							</li>
+							<li>
+								<div class="thumb-content">
+									<a href="/artiste">Artiste</a>
+								</div>
+							</li>
+							<li>
+								<div class="thumb-content">
+									<a href="/albums">Album</a>
+								</div>
+							</li>
+							<li>
+								<div class="thumb-content">
+									<a href="/single">Single</a>
+								</div>
+							</li>
+							<li>
+								<div class="thumb-content">
+									<a href="/tour">Tours/Concert</a>
+								</div>
+							</li>
+							<li>
+								<div class="thumb-content">
+									<a href="/contact">Contact</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="col-xs-12 col-sm-6 col-md-3">
+
+					<div class="widget no-box">
+						<h5 class="widget-title">Contactez-nous<span></span>
+						</h5>
+
+						<p>
+							<a href="mailto:jeanneaupierre@gmail.com" title="glorythemes">jeanneaupierre@gmail.com</a>
+						</p>
+						<ul class="social-footer2">
+							<li class="">
+								<a title="youtube" target="_blank" ><img src="/img/yt_icon_rgb.png" ></a>
+							</li>
+							<li class="">
+								<a  target="_blank" title="Facebook"><img src="/img/f_logo_RGB-Blue_58.png"></a>
+							</li>
+							<li class="">
+								<a  target="_blank" title="Twitter"><img  src="/img/Twitter_Logo_Blue.png"></a>
+							</li>
+							<li class="">
+								<a title="instagram" target="_blank" ><img src="/img/icons8-instagram-48.png"></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+				<div class="footer-copyright">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<div
+									class="copyright text-center">
+									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+									<p style="color:white;">Copyright &copy;<script>
+											document.write(new Date().getFullYear());
+										</script>
+									</p>
+									<p style="color:#ffe400;">
+										All rights reserved | This template is made with
+										<i class="fa fa-heart-o" aria-hidden="true"></i>
+										by
+										<a href="https://colorlib.com" target="_blank">Colorlib</a>
+									</p>
+									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

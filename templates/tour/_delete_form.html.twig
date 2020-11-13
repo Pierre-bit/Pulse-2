@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('tour_delete', {'id': tour.id}) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer cette tournée?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tour.id) }}">
+    <button class="site-btn">Supprimer</button>
+
+</form>

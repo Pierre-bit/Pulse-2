@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{%form_theme registrationForm 'bootstrap_4_layout.html.twig'%}  
+{% block title %}Ajouter Utilisateur{% endblock %}
+
+{% block body %}
+	<!--  section -->
+	<section class="page-info-section set-bg" data-setbg="img/page-info-bg.jpg">
+		<div class="container">
+			<div class="section-title text-center">
+				<h2>Ajouter Utilisateur</h2>	
+			</div>
+		</div>
+	</section>
+	<!--  section end -->
+
+    {{ form_start(registrationForm) }}
+
+    <div class="contact-form">
+    <div class="row">
+        <div class="col-lg-4 offset-2">
+        {{ form_row(registrationForm.email) }}
+                </div>
+        <div class="col-lg-4">
+        {{ form_row(registrationForm.Login) }}
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 offset-2">
+        {{ form_row(registrationForm.nom) }}
+                </div>
+        <div class="col-lg-4">
+        {{ form_row(registrationForm.prenom) }}
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 offset-2">
+        {{ form_row(registrationForm.telephone) }}
+                </div>
+        <div class="col-lg-4">
+        {{ form_row(registrationForm.plainPassword,{'label': 'Mot de passe'}) }}
+           </div>
+    </div>
+        <button class="site-btn">Enregistrer</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}

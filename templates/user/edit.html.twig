@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{%form_theme form 'bootstrap_4_layout.html.twig'%}  
+{% block title %}Modifier Utilisateur{% endblock %}
+
+
+{% block body %}
+<!--  section -->
+<section class="page-info-section set-bg" data-setbg="img/page-info-bg.jpg">
+	<div class="container">
+		<div class="section-title text-center">
+			<h2>Modifier Utilisateur</h2>
+		</div>
+	</div>
+</section>
+<!--  section end -->
+
+
+    {{ include('user/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+</br></br>
+<a href="{{ path('user_index') }}">Revenir aux utilisateurs</a>
+
+    
+{% endblock %}

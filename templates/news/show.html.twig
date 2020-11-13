@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vue News
+{% endblock %}
+
+
+{% block body %}
+
+<div class="row" style="margin-top:50px; margin-left:50px ; margin-bottom:20px">
+    {% for news in newss %}
+        <div class="col-md-4 ">
+        {% if news.artiste.filename %}
+                                
+                                <img src="/images/artiste/{{news.artiste.filename}}" alt="card-img-top" style="width: 75%; height:400px; border-radius: 10px;">
+                                
+                                {% else %}
+                            
+                                <img src="/image/artiste/empty.jpg" alt="card-img-top" style="width: 75%; height:500px;">
+                                {% endif %}
+        </div>
+        <div class="col-md-7" > 
+            <div class="row" >
+            <div class="col-12">
+            <h2 style:"text-align:left;color:black;font-weight:bold;">{{ news.artiste.nomArtiste|title}} - {{ news.titre|title}}</h2>
+            </div>
+            </div>
+            <div class="row" style="margin-top:30px;">
+                <div class="col-12">
+                    <h4 style:"text-align:left">{{ news.description  }}</h4>
+                </div>
+            </div> 
+        </div>
+    </div>
+        {% if is_granted('ROLE_ADMIN') %}
+
+        <div class="row" style="margin-top:50px">
+
+            <div class="col-3 offset-1">
+                <a href="{{ path('news_index') }}" class="site-btn">Retour aux News</a>
+            </div>
+            <div class="col-3">
+            
+                <a href="{{ path('news_edit', {'id': news.id}) }}"class="site-btn">Mettre à jour</a>
+            </div>
+            <div class="col-3">
+            {{ include('news/_delete_form.html.twig') }}
+
+            </div>
+        </div>
+        {% else %}
+            <a href="{{ path('news_index') }}" class="site-btn">Retour</a>
+        {% endif %} 
+    {% endfor %} 
+{% endblock %}

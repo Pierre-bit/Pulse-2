@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Single{% endblock %}
+
+{% block body %}
+        	<!--  section -->
+	<section class="page-info-section set-bg" data-setbg="img/page-info-bg.jpg">
+		<div class="container">
+			<div class="section-title text-center">
+				<h2>Modifier Single</h2>	
+			</div>
+		</div>
+	</section>
+	<!--  section end -->
+
+    {{ include('single/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+	</br></br>
+    <a href="{{ path('single_index') }}">Revenir aux Singles</a>
+
+{% endblock %}

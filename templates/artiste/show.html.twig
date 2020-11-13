@@ -1,0 +1,188 @@
+{% extends 'base.html.twig' %}
+{% block title %}Vue Artiste{% endblock %}
+{% block body %}
+{# <h1>{{ artiste.nomArtiste }}</h1> #}
+    <div class="row" style="margin-top:50px">
+        <div class="col-md-4 ">
+        {% if artiste.filename %}
+                                
+                                <img src="{{vich_uploader_asset(artiste, 'imageFile')}}" alt="card-img-top" style="width: 75%; height:400px; border-radius: 10px;">
+                                
+                                {% else %}
+                            
+                                <img src="/image/artiste/empty.jpg" alt="card-img-top" style="width: 75%; height:400px;">
+                                {% endif %}
+        </div>
+        <div class="col-md-7" > 
+            <div class="row" >
+            <div class="col-12">
+            <h2 style:"text-align:left;color:black;font-weight:bold;">{{ artiste.nomArtiste|title}}</h2>
+            </div>
+            </div>
+            <div class="row" style="margin-top:30px;">
+            <h4 style:"text-align:left">{{ artiste.biographie  }}</h4>
+            </div>     
+        </div>  
+    </div>
+    <div class="row">
+	    <div class="col-md-4 ">
+            <ul class="social-footer3">
+                {% if artiste.youtube != NULL %}
+                    <li style="visible">
+                        <a title="youtube" target="_blank" href="{{ artiste.youtube }}"><img src="/img/yt_icon_rgb.png"></a>
+                    </li>
+                    {% else %}
+                {% endif %}
+                {% if artiste.facebook != NULL %}
+                    <li style="visible">
+                        <a href="{{ artiste.facebook }}" target="_blank" title="Facebook"><img src="/img/f_logo_RGB-Blue_58.png"></a>
+                    </li>
+                    {% else %}
+                {% endif %}
+                {% if artiste.twitter != NULL %}
+                    <li style="visible">
+                        <a href="{{ artiste.twitter }}" target="_blank" title="Twitter"><img src="/img/Twitter_Logo_Blue.png"></a>
+                    </li>
+                    {% else %}
+                {% endif %}
+                {% if artiste.instagram != NULL %}
+                    <li style="visible">
+                        <a title="instagram" target="_blank" href="{{ artiste.instagram }}"><img src="/img/icons8-instagram-48.png"></a>
+                    </li>
+                    {% else %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-1 "></div>
+        <div class="col-md-3 ">
+        <h3 class="Music">Single</h3>
+            <div class="texthide" display="none" style="display:none">
+                <div class="row">
+                    {% for Single in singles %}
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        <h5>
+                                            {{Single.titre}}
+                                            {{Single.DateSorties ? Single.DateSorties|date('Y') : ''}}
+                                        </h5>
+                                    </th>
+                                    <td>
+                                        {% if Single.filename %}
+                                            <a href="{{ path('single_show', {'id': Single.id}) }}">
+
+                                                <img src="/images/single/{{Single.filename}}" alt="card-img-top" style="width:40%; height:200px; border-radius: 10px;">
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ path('single_show', {'id': Single.id}) }}">
+                                                <img src="/images/single/empty.jpg" alt="card-img-top" style="width: 100%; height:500px;">
+                                            </a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    {% else %}
+                    Aucun Single enregistré
+                    {% endfor %}
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h3 class="Music">Album</h3>
+            <div class="texthide" display="none" style="display:none">
+                <div class="row">
+                    {% for albums in album %}
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>
+                                <h5>
+                                    {{albums.titre|title}}
+                                    {{albums.DateSorties ? albums.DateSorties|date('Y') : ''}}
+                                </h5>
+                                </th>
+                                <td>
+                                    {% if albums.filename %}
+                                    <a href="{{ path('albums_show', {'id': albums.id}) }}">
+
+                                        <img src="/images/album/{{albums.filename}}" alt="card-img-top" style="width:40%; height:200px; border-radius: 10px;">
+                                    </a>
+                                    {% else %}
+                                    <a href="{{ path('albums_show', {'id': albums.id}) }}">
+                                        <img src="/images/album/empty.jpg" alt="card-img-top" style="width: 100%; height:500px;">
+                                    </a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {% else %}
+                    Aucun Album enregistré
+                    {% endfor %}
+                </div>
+            </div>    
+        </div>
+
+    <div class="col-md-3">
+            <h3 class="Music">Tour</h3>
+            <div class="texthide" display="none" style="display:none">
+                <div class="row">
+                    {% for tour in tour %}
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        <h5>
+                                            {{tour.nom|title}}
+                                            {{tour.Date ? tour.Date|date('Y') : ''}}
+                                        </h5>
+                                    </th>
+                                    <td>
+                                        {% if tour.filename %}
+                                            <a href="{{ path('tour_show', {'id': tour.id}) }}">
+
+                                                <img src="/images/tour/{{tour.filename}}" alt="card-img-top" style="width:40%; height:200px; border-radius: 10px;">
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ path('tour_show', {'id': tour.id}) }}">
+                                                <img src="/images/tour/empty.jpg" alt="card-img-top" style="width: 100%; height:500px;">
+                                            </a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    {% else %}
+                        Aucune Tournée/Concert enregistré
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+    <div class="row" style="margin-top:50px">
+
+        <div class="col-3 offset-1">
+            <a href="{{ path('artiste_index') }}"class="site-btn">Retour aux Artistes</a>
+        </div>
+        <div class="col-3">
+            
+        <a href="{{ path('artiste_edit', {'id': artiste.id}) }}"class="site-btn">Mise à jour</a>
+        </div>
+        <div class="col-3">
+        {{ include('artiste/_delete_form.html.twig') }}
+        </div>
+    </div>
+    {% else %}   
+    <a href="{{ path('artiste_index') }}"class="site-btn">Retour aux Artistes</a>
+    {% endif %}
+{% endblock %}

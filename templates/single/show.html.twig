@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vue Single
+{% endblock %}
+
+{% block body %}
+<div class="row" style="margin-top:50px">
+	<div class="col-md-4 ">
+
+			{% if single.filename %}
+
+				<img src="{{vich_uploader_asset(single, 'imageSingle') }}" alt="card-img-top" style="width: 75%; height:400px; border-radius: 10px;">
+
+			{% else %}
+
+				<img src="/image/artiste/empty.jpg" alt="card-img-top" style="width: 75%; height:400px; border-radius: 10px;">
+			{% endif %}
+	</div>
+	<div class="col-md-7">
+		<div class="row">
+			<div class="col-12">
+				<h2>{{ single.titre|title }}</h2>
+			</div>
+		</div>
+		<div class="row" style="margin-top:30px;">
+			{% for artiste in artistes %}
+				<div class="col-12">
+				<h3>By
+				{{ artiste.nomArtiste|title }}
+				</h3>
+				{% if not loop.last %}-{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+		<div class="row" style="margin-top:30px;">
+			<div class="col-12">
+				<h4 style:"text-align:left">Sortie de l'album:
+				{{ single.DateSorties ? single.DateSorties|date('Y') : '' }}</h4> 
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row" style="margin-top:20px">
+	<div class="col-md-6" style="margin-left:-29px">
+		{% if single.Idyoutube != NULL %}
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/{{single.Idyoutube}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		{% else %}
+			Pas de vidéo disponible
+		{% endif %}
+	</div>
+	<div class="col-md-6">
+		{% if single.deezerId != NULL %}
+			<div class="deezer-widget-player" data-src="https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=ff0000&layout=dark&size=medium&type=tracks&id={{ single.deezerId }}&app_id=1" data-scrolling="no" data-frameborder="0" data-allowtransparency="true" data-width="700" data-height="92">
+			</div>
+		{% else %}
+			Pas de lecteur disponible
+		{% endif %}
+	</div>
+</div>
+
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+    <div class="row" style="margin-top:50px">
+
+        <div class="col-3 offset-1">
+            <a href="{{ path('single_index') }}"class="site-btn">Retour aux Singles</a>
+        </div>
+        <div class="col-3">
+            
+        <a href="{{ path('single_edit', {'id': single.id}) }}"class="site-btn">Mettre à jour</a>
+        </div>
+        <div class="col-3">
+        {{ include('single/_delete_form.html.twig') }}
+        </div>
+
+    </div>
+    {% else %}
+    
+    <a href="{{ path('single_index') }}"class="site-btn">Retour aux Singles</a>
+
+
+    {% endif %}	
+
+
+{% endblock %}
+

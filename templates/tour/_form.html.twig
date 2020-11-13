@@ -1,0 +1,36 @@
+{{ form_start(form) }}
+<div class="contact-form">
+	<div class="row">
+		<div class="col-lg-4 offset-2">
+			{{ form_row(form.nom) }}
+		</div>
+		<div class="col-lg-4">
+			{{ form_row(form.Date) }}
+		</div>
+	</div>
+    <div class="row">
+        <div class="col-lg-4 offset-2">
+            {{ form_row(form.Adresse) }}
+        </div>
+        <div class="col-lg-4">
+            {{ form_row(form.Ville) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 offset-2">
+            {{ form_row(form.Pays) }}
+        </div>
+        <div class="col-lg-4">
+            {{ form_row(form.Artiste) }}
+        </div>
+    </div>
+	<div class="row">
+        <div class="col-lg-4 offset-2">
+            {{ form_row(form.Idyoutube) }}
+        </div>
+		<div class="col-lg-4">
+			{{ form_row(form.imageTour, {'attr': {'class': 'dropzone'}})  }}
+		</div>
+	</div>
+    <button class="site-btn">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }}

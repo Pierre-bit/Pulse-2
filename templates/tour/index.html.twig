@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Tour
+{% endblock %}
+
+{% block body %}
+{% if app.session.flashBag.has('Tour') %}
+	<div class="alert alert-warning">
+		{% for msg in app.session.flashBag.get('Tour') %}
+			{{ msg }}
+		{% endfor %}
+	</div>
+{% endif %}
+			<!--  section -->
+	<section class="page-info-section set-bg" data-setbg="/img/page-info-bg.jpg">
+		<div class="container">
+			<div class="section-title text-center">
+				<h2>Tours</h2>	
+			</div>
+		</div>
+	</section>
+	<!--  section end -->
+	
+	<div class="jumbotron">
+		<div class="container">
+			{{ form_start(form)}}
+			<div class="form-row">
+				<div class="col offset-2">
+					{{ form_row(form.nom) }}
+				</div>
+				<div class="col">
+					<button class="site-btn">Rechercher</button>
+				</div>
+				{{ form_end(form)}}
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row ">
+			{% for tour in tour %}
+				
+					<div class="col-md-4">
+						<div class="flip-card">
+							<div class="flip-card-inner">
+								<div class="flip-card-front">
+									{% if tour.filename %}
+										<img src="{{vich_uploader_asset(tour, 'imageTour') }}" alt="card-img-top" style="width: 100%; height:400px; border-radius: 10px;">
+										<a href="{{ path('tour_show', {'id': tour.id}) }}">
+										{% else %}
+											<img src="/image/artiste/empty.jpg" alt="card-img-top" style="width: 100%; height:400px;">
+											<a href="{{ path('tour_show', {'id': tour.id}) }}">
+											{% endif %}
+										</div>
+										<div class="flip-card-back"></br>
+										<h2>
+											{{ tour.nom|title }}
+										</h2>
+									</br>
+								</br>
+								<p>
+									{{ tour.Date|date('d/m/Y') }}
+								</p>
+                                <br>
+                                <p>
+                                    {{ tour.Adresse|title }}
+                                <br>
+                                    {{ tour.Ville|title }}
+                                <br>
+                                    {{ tour.Pays|title }}
+                                </p>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		
+	{% else %}
+		<tr>
+			<td colspan="6">Pas de concert ou tour trouvés</td>
+		</tr>
+	{% endfor %}
+	</div>
+</div>
+	{% if is_granted('ROLE_ADMIN') %}
+	<a href="{{ path('tour_new') }}">Ajouter un concert/tour</a>
+	{% endif %}
+	<ul class="navigation">
+	{{ knp_pagination_render(tour) }}
+	</ul>
+{% endblock %}
+

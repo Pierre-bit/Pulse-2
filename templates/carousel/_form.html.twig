@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="row">
+        
+        <div class="col-lg-4 ">
+            {{ form_row(form.imageFile, {'attr': {'class': 'dropzone'}})  }}
+        </div>
+    </div>
+    <button class="site-btn">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Carousel{% endblock %}
+
+{% block body %}
+<!--  section -->
+<section class="page-info-section set-bg" data-setbg="/img/page-info-bg.jpg">
+	<div class="container">
+		<div class="section-title text-center">
+			<h2>Nouveau Carousel</h2>
+		</div>
+	</div>
+</section>
+<!--  section end -->
+    {{ include('carousel/_form.html.twig') }}
+    <a href="{{ path('carousel_index') }}" style="margin:50px">Retour à la liste </a>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="grid-container">
+		<div class="grid-x grid-padding-x">
+			<div class="small-12 medium-8 medium-offset-2 large-6 large-offset-3 cell">
+
+				{% for message in app.flashes('warning') %}
+					<div class="alert alert-warning">{{ message }}</div>
+				{% endfor %}
+
+				<h1 style="margin-top: 30px">Mot de passe oublié ?</h1>
+
+				<p style="margin-top: 20px; margin-bottom:30px">Demandez à réinitialiser votre mot de passe en renseignant votre mail.</p>
+
+
+				{{form_start(form)}}
+				{{form_row(form.email)}}
+				<button class="site-btn" type="submit">Envoyer</button>
+				{{form_end(form)}}
+			</div>
+		</div>
+	</div>
+{% endblock %}

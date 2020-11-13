@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Artiste{% endblock %}
+{%form_theme form 'bootstrap_4_layout.html.twig'%}  
+{% block body %}
+<div style="margin-bottom:50px;">
+</div>
+
+    	<!--  section -->
+	<section class="page-info-section set-bg" data-setbg="img/page-info-bg.jpg">
+		<div class="container">
+			<div class="section-title text-center">
+				<h2>Ajouter un Artiste</h2>	
+			</div>
+		</div>
+	</section>
+	<!--  section end -->
+    
+    {{ include('artiste/_form.html.twig') }}
+    </br>
+    <a href="{{ path('artiste_index') }}">Retour aux artistes</a>
+{% endblock %}

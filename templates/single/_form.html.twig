@@ -1,0 +1,34 @@
+{{ form_start(form) }}
+    <div class="contact-form">
+
+    <div class="row">
+        <div class="col-lg-4 offset-2">
+            {{ form_row(form.titre) }}
+         </div>
+        <div class="col-lg-4">
+            {{ form_row(form.DateSorties) }}
+         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 offset-2">
+            {{ form_row(form.Artistes) }}
+        </div>
+        <div class="col-lg-4">
+            {{ form_row(form.imageSingle, {'attr': {'class': 'dropzone'}})  }}
+        </div>
+    </div>
+        
+    <div class="row">
+        <div class="col-lg-4 offset-2">
+            {{ form_row(form.deezerId) }}
+        </div>
+ 
+        <div class="col-lg-4">
+            {{ form_row(form.Idyoutube)  }}
+        </div>
+    </div>
+
+
+    <button class="site-btn">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

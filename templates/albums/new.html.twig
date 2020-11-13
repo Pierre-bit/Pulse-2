@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Album{% endblock %}
+{%form_theme form 'bootstrap_4_layout.html.twig'%}  
+{% block body %}
+<div style="margin-bottom:50px;">
+
+
+</div>
+   	<!--  section -->
+	<section class="page-info-section set-bg" data-setbg="img/page-info-bg.jpg">
+		<div class="container">
+			<div class="section-title text-center">
+				<h2>Ajouter un Album</h2>	
+			</div>
+		</div>
+	</section>
+	<!--  section end -->
+
+    {{ include('albums/_form.html.twig') }}
+    </br>
+
+    <a href="{{ path('albums_index') }}">Retour aux Albums</a>
+{% endblock %}

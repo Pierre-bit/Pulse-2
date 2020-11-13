@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vue Tour
+{% endblock %}
+
+{% block body %}
+
+	<div class="row" style="margin-top:50px ; margin-left:50px ; margin-bottom:20px">
+
+		<div class="col-md-4 ">
+
+			{% if tour.filename %}
+				<img src="{{vich_uploader_asset(tour, 'imageTour') }}" alt="card-img-top" style="width: 75%; height:400px; border-radius: 10px;">
+			{% else %}
+				<img src="/image/artiste/empty.jpg" alt="card-img-top" style="width: 75%; height:400px;">
+			{% endif %}
+		</div>
+		<div class="col-md-7">
+			<div class="row">
+				<div class="col-12">
+					<h2>{{ tour.nom|title }}</h2>
+				</div>
+			</div>
+			<div class="row" style="margin-top:30px;">
+				{% for artiste in artistes %}
+					<div class="col-12">
+					<h3>By
+						{{ artiste.nomArtiste|title}}
+					</h3>
+					{% if not loop.last %}-
+					{% endif %}
+					</div>
+				{% endfor %}
+			</div>
+			<div class="row" style="margin-top:30px;">
+				<div class="col-12">
+			<h4 style:"text-align:left">Date de la Tournée/Concert:
+					{{ tour.Date ? tour.Date|date('d/m/Y') : '' }}</h4>
+				</div>	
+			</div>
+			<div class="row" style="margin-top:30px;">
+				<div class="col-12">
+				<h4 style:"text-align:left">{{ tour.Adresse }}</h4>
+				</div>
+			</div>
+			<div class="row" style="margin-top:30px;">
+				<div class="col-12">
+				<h4 style:"text-align:left">{{ tour.Ville}}</h4>
+				</div>
+			</div>
+			<div class="row" style="margin-top:30px;">
+				<div class="col-12">
+				<h4 style:"text-align:left">{{ tour.Pays }}</h4>
+				</div>
+            </div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6" style="margin-left:-29px">
+			{% if tour.Idyoutube != NULL %}
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/{{tour.Idyoutube}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			{% else %}
+				Pas de vidéo disponible
+			{% endif %}
+		</div>
+	</div>
+	    {% if is_granted('ROLE_ADMIN') %}
+
+    <div class="row" style="margin-top:50px">
+        <div class="col-3 offset-1">
+            <a href="{{ path('tour_index') }}"class="site-btn">Retour à Tour</a>
+        </div>
+        <div class="col-3">
+            
+        <a href="{{ path('tour_edit', {'id': tour.id}) }}"class="site-btn">Mettre à jour</a>
+        </div>
+        <div class="col-3">
+        {{ include('tour/_delete_form.html.twig') }}
+        </div>
+    </div>
+    {% else %}
+    <a href="{{ path('tour_index') }}"class="site-btn">Retour aux Tours</a>
+    {% endif %}
+{% endblock %}

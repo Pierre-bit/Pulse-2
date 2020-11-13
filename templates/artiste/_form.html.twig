@@ -1,0 +1,33 @@
+{{ form_start(form) }}
+<div class="contact-form">
+    <div class="row">
+        <div class="col-lg-4 offset-2">
+        {{ form_row(form.nomArtiste) }}
+         </div>
+        <div class="col-lg-4">
+        {{ form_row(form.biographie) }}
+         </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 offset-2">
+        {{ form_row(form.youtube) }}
+        </div>
+        <div class="col-lg-4">
+        {{ form_row(form.facebook) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 offset-2">
+        {{ form_row(form.twitter) }}
+        </div>
+        <div class="col-lg-4">
+        {{ form_row(form.instagram)}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 offset-4">
+        {{ form_row(form.imageFile, {'attr': {'class': 'dropzone'}})  }}
+        </div>
+    </div>
+    <button class="site-btn">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}
